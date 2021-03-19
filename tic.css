@@ -1,0 +1,127 @@
+ /* CSS Code */
+    /* Heading */
+    body{
+        background-color: cadetblue;
+    }
+    h1 { 
+        color: black; 
+        font-size: 45px; 
+    } 
+  
+    /* 3*3 Grid */
+    #b1, #b2, #b3, #b4, #b5,  
+    #b6, #b7, #b8, #b9 { 
+        width: 80px; 
+        height: 52px; 
+        margin: auto 2% 2%; 
+        border: 1px solid gray; 
+        border-radius: 6px; 
+        font-size: 30px; 
+        background: #E7E5EE;
+        background: -webkit-linear-gradient(top right, #E7E5EE, #B9D7DD);
+        background: -moz-linear-gradient(top right, #E7E5EE, #B9D7DD);
+        background: linear-gradient(to bottom left, #E7E5EE, #B9D7DD); 
+      
+        text-align: center; 
+    } 
+    .squareContainer{
+        margin-bottom:25px;
+    }
+    /*start button*/
+    #start{
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        border-radius:50%;
+        font-family: Verdana,  
+            Geneva, Tahoma, sans-serif; 
+  
+        background-color: black; 
+        color: white; 
+
+    }
+    /* Reset Button */
+    #but {  
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        border-radius:50%;
+        font-family: Verdana,  
+            Geneva, Tahoma, sans-serif; 
+  
+        background-color: black; 
+        color: white; 
+        /* font-size: 20px;  */
+        cursor: pointer; 
+    } 
+  
+    /* Player turn space */
+    #print { 
+        font-family: Verdana,  
+            Geneva, Tahoma, sans-serif; 
+  
+        color: dodgerblue; 
+        font-size: 20px; 
+    } 
+  
+    /* Main Contianer */
+    #main { 
+        text-align: center; 
+    } 
+  
+    /* Game Instruction Text */
+    #ins { 
+        font-family: Verdana,  
+            Geneva, Tahoma, sans-serif; 
+              
+        color: dodgerblue; 
+        font-size: 17px; 
+    } 
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      
+      /* Modal Content/Box */
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+      }
+      
+      /* The Close Button */
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
