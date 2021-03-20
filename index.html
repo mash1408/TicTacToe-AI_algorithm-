@@ -15,7 +15,10 @@
 <body> 
     <div id="main"> 
         <h1>TIC TAC TOE</h1> 
-      
+        <label class="container">User First
+            <input type="checkbox" id ="playerChoice">
+            <span class="checkmark"></span>
+          </label>
         <br><br>
         <div class="squareContainer">
         <!-- 3*3 grid of Boxes -->
@@ -55,7 +58,7 @@
         <button id="but" onclick="myfunc_2()"> 
             RESET 
         </button> 
-        <button id="start" class onclick="play()"> 
+        <button id="start" class onclick="checkBox();play()"> 
             START
         </button>
     </div>

@@ -2,6 +2,11 @@
 var board=[2,2,2,2,2,2,2,2,2]
 var turn=1
 userFlag=0
+let x
+function checkBox(){
+ x=document.getElementById("playerChoice").checked
+ console.log(x)
+}
 // Function to reset game 
 function myfunc_2() { 
 	location.reload(); 
@@ -17,13 +22,13 @@ function myfunc_2() {
 
 } 
 function make2(){
-    if(board[4]=== "")
+    if(board[4]=== 2)
     return 5
     else {
-       var random=Math.floor(Math.random() * 5)
-       var rand=[2,4,6,8]
-       while(board[rand[random]]!="")
-        random=Math.floor(Math.random() * 5)
+       var random=Math.floor(Math.random() * 4)
+       var rand=[1,3,5,7]
+       while(board[rand[random]]!=2)
+        random=Math.floor(Math.random() * 4)
 
         return rand[random]
     }
@@ -160,12 +165,20 @@ if(board[2]==p && board[4]==p && board[6]==p)
 
 	return 0;
 }
+
 function play(){
-    userFlag=1;
+ 
+    if(x){
+        playO()
+        refreshBoard()
+        userFlag=1;
+    }
+    else{
     console.log('MACHINE TURN')
-    
-playX()
-refreshBoard()
+    playX()
+    refreshBoard()
+    userFlag=1;
+    }
 }
 function refreshBoard(){
     let boardChars=[]
@@ -181,7 +194,7 @@ function refreshBoard(){
         boardChars[i]=" "
         }
     }
-    console.log(board)
+    console.log(boardChars)
 document.getElementById("b1").value=boardChars[0]
 document.getElementById("b2").value=boardChars[1]
 document.getElementById("b3").value=boardChars[2]
@@ -230,19 +243,63 @@ function playX(){
             Go(posswin(5)+1)
         }
         else{
-            Go(make2())
+            Go(anywhereBlank())
         }
     }
+
     if(checkwin(3)===0)
     return
-    else
-   console.log("Machine won")
+    else{
+    window.alert("MACHINE WON");
+    myfunc_2()
+    }
+    
 }
+
+function playO(){
+if(turn === 2){
+if(board[4]===2)    
+    Go(5)
+else
+    Go(1)
+}
+if(turn === 4){
+    if(posswin(3)!=0)    
+        Go(posswin(3)+1)
+    else
+        Go(make2())
+    }
+if(turn=== 6){
+    if(posswin(5)!=0)
+     Go(posswin(5)+1)
+    else if(posswin(3)!=0)
+     Go(posswin(3)+1)
+    else
+     Go(make2())
+}
+if( turn === 8){
+    if(posswin(5)!=0)
+     Go(posswin(5)+1)
+    else if(posswin(3)!=0)
+     Go(posswin(3)+1)
+    else
+     Go(anywhereBlank())
+    
+}
+
+if(checkwin(5)===0)
+    return
+    else{
+    window.alert("MACHINE WON");
+    myfunc_2()
+    }
+}
+
 function anywhereBlank(){
-    var random=Math.floor(Math.random() * 10)
+    var random=Math.floor(Math.random() * 9)
     var rand=[1,2,3,4,5,6,7,8]
-    while(board[rand[random]]!="")
-     random=Math.floor(Math.random() * 10)
+    while(board[rand[random]]!=2)
+     random=Math.floor(Math.random() * 9)
 
      return rand[random] 
 }
@@ -253,15 +310,14 @@ function Go(n){
     else {
         board[n-1]=5;
     }
-    console.log("Go")
     turn++;
 }
 
 function user(Id){
     var checkWin
+    console.log(userFlag)
     if(userFlag===1){
-    document.getElementById(Id).value="O"
-    
+
         if(Id==="b1"){
            
             Go(1)
@@ -291,12 +347,14 @@ function user(Id){
         else if(Id==="b9"){
             Go(9)
         }
-    console.log(board)
+    refreshBoard()
     userFlag=0
-    if(checkwin(5)===0)
+    if(checkwin(3)===0 && turn%2===1 || checkwin(5)===0 && turn%2===0)
     play()
-    else
-   console.log("User won")
-    
+    else{
+    window.alert("USER WON")
+    myfunc_2()
+    }
 }
 }
+
