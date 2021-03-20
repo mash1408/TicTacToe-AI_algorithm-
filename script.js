@@ -23,12 +23,15 @@ function myfunc_2() {
 } 
 function make2(){
     if(board[4]=== 2)
-    return 5
+    return 4
     else {
        var random=Math.floor(Math.random() * 4)
        var rand=[1,3,5,7]
-       while(board[rand[random]]!=2)
+       while(board[rand[random]]!=2){
+        console.log('make2')
         random=Math.floor(Math.random() * 4)
+       }
+         console.log(rand[random])
 
         return rand[random]
     }
@@ -194,6 +197,7 @@ function refreshBoard(){
         boardChars[i]=" "
         }
     }
+    console.log(board)
     console.log(boardChars)
 document.getElementById("b1").value=boardChars[0]
 document.getElementById("b2").value=boardChars[1]
@@ -267,7 +271,7 @@ if(turn === 4){
     if(posswin(3)!=0)    
         Go(posswin(3)+1)
     else
-        Go(make2())
+        Go(make2()+1)
     }
 if(turn=== 6){
     if(posswin(5)!=0)
@@ -275,7 +279,7 @@ if(turn=== 6){
     else if(posswin(3)!=0)
      Go(posswin(3)+1)
     else
-     Go(make2())
+     Go(anywhereBlank()+1)
 }
 if( turn === 8){
     if(posswin(5)!=0)
@@ -283,7 +287,7 @@ if( turn === 8){
     else if(posswin(3)!=0)
      Go(posswin(3)+1)
     else
-     Go(anywhereBlank())
+     Go(anywhereBlank()+1)
     
 }
 
@@ -297,10 +301,12 @@ if(checkwin(5)===0)
 
 function anywhereBlank(){
     var random=Math.floor(Math.random() * 9)
-    var rand=[1,2,3,4,5,6,7,8]
+    var rand=[0,1,2,3,4,5,6,7,8]
     while(board[rand[random]]!=2)
      random=Math.floor(Math.random() * 9)
-
+     
+     console.log('anywhereblank')
+     console.log(rand[random])
      return rand[random] 
 }
 function Go(n){
@@ -314,8 +320,6 @@ function Go(n){
 }
 
 function user(Id){
-    var checkWin
-    console.log(userFlag)
     if(userFlag===1){
 
         if(Id==="b1"){
@@ -349,7 +353,7 @@ function user(Id){
         }
     refreshBoard()
     userFlag=0
-    if(checkwin(3)===0 && turn%2===1 || checkwin(5)===0 && turn%2===0)
+    if(checkwin(3)===0 && turn%2===0 || checkwin(5)===0 && turn%2===1)//turn is incremented above when Go method is implemented
     play()
     else{
     window.alert("USER WON")
