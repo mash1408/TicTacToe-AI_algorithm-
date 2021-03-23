@@ -188,32 +188,32 @@ function playX(){
 
 function playO(){
 if(turn === 2){
-if(board[4]===2)    
+if(checkBlank(5))    
     Go(5)
 else
-    Go(1)
+    Go(8)
 }
 if(turn === 4){
     if(posswin('x')!=0)    
-        Go(posswin('x')+1)
+        Go(posswin('x'))
     else
-        Go(make2()+1)
+        Go(make2())
     }
 if(turn=== 6){
     if(posswin('o')!=0)
-     Go(posswin('o')+1)
+     Go(posswin('o'))
     else if(posswin('x')!=0)
-     Go(posswin('x')+1)
+     Go(posswin('x'))
     else
-     Go(anywhereBlank()+1)
+     Go(anywhereBlank())
 }
 if( turn === 8){
     if(posswin('o')!=0)
-     Go(posswin('o')+1)
+     Go(posswin('o'))
     else if(posswin('x')!=0)
-     Go(posswin('x')+1)
+     Go(posswin('x'))
     else
-     Go(anywhereBlank()+1)
+     Go(anywhereBlank())
     
 }
 
